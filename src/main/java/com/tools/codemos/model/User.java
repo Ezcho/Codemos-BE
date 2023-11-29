@@ -1,20 +1,19 @@
 package com.tools.codemos.model;
 
-import com.tools.codemos.login.UserRole;
-import lombok.AllArgsConstructor;
+import com.tools.codemos.login.Authority;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User {
 
     @Id
@@ -23,16 +22,18 @@ public class User {
     private String loginId;
     private String password;
     private String nickname;
-    private UserRole role;
+    private Authority authority;
+    @Builder
+    public User(Long id, String loginId, String password, String nickname, Authority authority) {
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+        this.nickname = nickname;
+        this.authority = authority;
+    }
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<LeaderBoardEntity> leaderBoardEntries = new ArrayList<>();
-
-    public Long getId(){return id;}
-    public String getLoginId(){return loginId;}
-    public String getPassword(){return password;}
-    public String getNickname(){return nickname;}
-    public UserRole getUserRole(){return role;}
-
 
 
 }

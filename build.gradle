@@ -25,7 +25,6 @@ dependencies {
 	//Security Login
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
-
 	implementation 'org.springframework.security:spring-security-crypto:5.7.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -38,6 +37,12 @@ dependencies {
 	implementation 'mysql:mysql-connector-java:8.0.33'    //mysql
 
 	runtimeOnly 'mysql:mysql-connector-java'
+
+
+
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
 
 
 

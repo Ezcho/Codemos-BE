@@ -27,9 +27,8 @@ public class LeaderBoardService {
     @Autowired
     private CodeRepository codeRepository;
     @Autowired
-    private UserService userService; // UserService 주입
+    private UserService userService;
 
-    //
     public Page<LeaderBoardDTO> getLeaderBoard(int pageNo) {
         int pageSize = 10;
         PageRequest pageRequest = PageRequest.of(pageNo, pageSize, Sort.by("score").descending());
@@ -43,11 +42,8 @@ public class LeaderBoardService {
     }
 
     //
-    public LeaderBoardEntity createLeaderBoard(LeaderBoardRequest dto) {
-        //로그인 정보 얻는 로직
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String loginId = ((UserDetails)principal).getUsername();
-        //유저 엔티티 조회
+    public LeaderBoardEntity createLeaderBoard(LeaderBoardRequest dto, String loginId) {
+        // 이전 로직을 JWT 토큰에서 추출된 loginId로 변경
         User user = userService.getLoginUserByLoginId(loginId);
         //리더보드 객체 생성
         LeaderBoardEntity leaderBoard = new LeaderBoardEntity();
@@ -89,10 +85,8 @@ public class LeaderBoardService {
     }
 
     public List<LeaderBoardEntity> getLeaderBoardEntries(int start, int end) {
-        // 계산된 offset과 limit을 사용하여 데이터베이스에서 쿼리합니다.
         int offset = start - 1; // 데이터베이스 인덱스는 0부터 시작합니다.
         int limit = end - start + 1;
         return leaderBoardRepository.findEntriesByRange(offset, limit);
     }
-
 }

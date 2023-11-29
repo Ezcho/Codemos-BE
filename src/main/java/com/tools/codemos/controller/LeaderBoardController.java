@@ -1,5 +1,6 @@
 package com.tools.codemos.controller;
 import com.tools.codemos.dto.LeaderBoardRequest;
+import com.tools.codemos.jwt.TokenProvider;
 import com.tools.codemos.model.LeaderBoardEntity;
 import com.tools.codemos.service.LeaderBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,15 @@ import java.util.List;
 public class LeaderBoardController{
     @Autowired
     private LeaderBoardService service;
+    private TokenProvider tokenProvider;
 
     @PostMapping("/create")
-    public LeaderBoardEntity create(@RequestBody LeaderBoardRequest dto) {
-        return service.createLeaderBoard(dto);
+    public LeaderBoardEntity create(@RequestBody LeaderBoardRequest dto,
+                                    @RequestHeader(value = "Authorization") String token) {
+        token = token.substring(7); // "Bearer " 부분 제거
+        String username = tokenProvider.getUsernameFromToken(token);
+        return service.createLeaderBoard(dto, username);
     }
-
     @GetMapping//리더보드 조회(기본값 100, rows = n으로 파라미터 추가)
     public Iterable<LeaderBoardEntity> read(@RequestParam(defaultValue = "100") int rows) {
         return service.getTopLeaderBoard(rows);
@@ -30,7 +34,6 @@ public class LeaderBoardController{
         List<LeaderBoardEntity> entries = service.getLeaderBoardEntries(start, end);
         return ResponseEntity.ok(entries);
     }
-
     @GetMapping("/read/{id}")//Id기반으로 읽어오는 리더보드
     public LeaderBoardEntity readById(@PathVariable int id) {
         return service.getLeaderBoardById(id);
@@ -43,5 +46,4 @@ public class LeaderBoardController{
     public void delete(@PathVariable int id) {
         service.deleteLeaderBoard(id);
     }
-
 }

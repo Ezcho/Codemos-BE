@@ -1,12 +1,41 @@
-<html lang="ko">
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title th:text="|${pageName}|"></title>
+  <style type="text/css" media="screen">
+    body {
+      margin: 100px;
+      background: #02071e;
+      font: 400 18px/1.5 -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+    }
+    .container {
+      max-width: 300px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #2b632e;
+    }
+  </style>
 </head>
 <body>
-<div>
-  <h1><a th:href="|/${loginType}|">[[${pageName}]]</a></h1> <hr/>
+<div class="container">
+  <h1><a th:href="@{'/' + ${loginType}}">[[${pageName}]]</a></h1>
+  <hr/>
   <div th:if="${nickname == null}">
     <h3>로그인x</h3>
     <button th:onclick="|location.href='@{/{loginType}/join (loginType=${loginType})}'|">회원 가입</button> <br/><br/>
