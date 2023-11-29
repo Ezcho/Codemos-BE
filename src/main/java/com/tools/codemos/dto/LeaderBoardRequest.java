@@ -3,6 +3,7 @@ package com.tools.codemos.dto;
 public class LeaderBoardRequest {
     private int score;
     private String code;
+    private String time;
     public int getScore() {
         return score;
     }
@@ -15,4 +16,6 @@ public class LeaderBoardRequest {
     public void setCode(String code) {
         this.code = code;
     }
+    public String getTime(){return time;}
+    public void setTime(){this.time = time;}
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/leaderboard")
-public class TestController {
+public class PublicAccessController {
     @Autowired
     private LeaderBoardService leaderBoardService;
     @GetMapping

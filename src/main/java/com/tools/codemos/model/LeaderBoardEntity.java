@@ -13,7 +13,7 @@ public class LeaderBoardEntity {
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private int id;
      private int score;
-
+     private String time;
      @ManyToOne
      @JoinColumn(name = "user_id")
     private User user;

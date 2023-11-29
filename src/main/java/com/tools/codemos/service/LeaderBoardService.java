@@ -34,7 +34,7 @@ public class LeaderBoardService {
         PageRequest pageRequest = PageRequest.of(pageNo, pageSize, Sort.by("score").descending());
         Page<LeaderBoardEntity> leaderBoardPage = leaderBoardRepository.findAll(pageRequest);
         List<LeaderBoardDTO> dtos = leaderBoardPage.getContent().stream()
-                .map(entity -> new LeaderBoardDTO(entity.getId(),  entity.getScore(), entity.getLoginId(), entity.getNickname()))
+                .map(entity -> new LeaderBoardDTO(entity.getId(),  entity.getScore(), entity.getLoginId(), entity.getNickname(),entity.getTime()))
                 .collect(Collectors.toList());
         return new PageImpl<>(dtos, pageRequest, leaderBoardPage.getTotalElements());
     }
@@ -45,7 +45,8 @@ public class LeaderBoardService {
         User user = userService.getLoginUserByLoginId(userIndex);
         //리더보드 객체 생성
         LeaderBoardEntity leaderBoard = new LeaderBoardEntity();
-        leaderBoard.setScore(dto.getScore());
+        leaderBoard.setScore(dto.getScore());   //점수 set
+        leaderBoard.setTime(dto.getTime()); //시간 set
         leaderBoard.setUser(user); //위에서 생성한 유저객체 set
         leaderBoard.setLoginId(user.getLoginId()); //유저객체 정보 set
         leaderBoard.setNickname(user.getNickname());
