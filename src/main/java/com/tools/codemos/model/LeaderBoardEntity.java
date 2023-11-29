@@ -12,7 +12,7 @@ public class LeaderBoardEntity {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private int id;
-     private double score;
+     private int score;
 
      @ManyToOne
      @JoinColumn(name = "user_id")

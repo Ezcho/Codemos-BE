@@ -16,27 +16,21 @@ public class CodeEntity {
     @MapsId
     @JoinColumn(name = "id")
     private LeaderBoardEntity leaderBoard;
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getCode() {
         return code;
     }
-
     public void setCode(String code) {
         this.code = code;
     }
-
     public LeaderBoardEntity getLeaderBoard() {
         return leaderBoard;
     }
-
     public void setLeaderBoard(LeaderBoardEntity leaderBoard) {
         this.leaderBoard = leaderBoard;
     }

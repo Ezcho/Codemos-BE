@@ -7,9 +7,9 @@ import lombok.Setter;
 @Setter
 public class CodeDTO {
     private int id;
-    private double score;
+    private int score;
     private String code;
 
-    public CodeDTO(int id, double score, String code) {
+    public CodeDTO(int id, int score, String code) {
     }
 }
