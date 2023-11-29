@@ -33,25 +33,22 @@ public class LeaderBoardService {
         int pageSize = 10;
         PageRequest pageRequest = PageRequest.of(pageNo, pageSize, Sort.by("score").descending());
         Page<LeaderBoardEntity> leaderBoardPage = leaderBoardRepository.findAll(pageRequest);
-
         List<LeaderBoardDTO> dtos = leaderBoardPage.getContent().stream()
                 .map(entity -> new LeaderBoardDTO(entity.getId(), entity.getScore(), entity.getLoginId(), entity.getNickname()))
                 .collect(Collectors.toList());
-
         return new PageImpl<>(dtos, pageRequest, leaderBoardPage.getTotalElements());
     }
 
-    //
-    public LeaderBoardEntity createLeaderBoard(LeaderBoardRequest dto, String loginId) {
-        // 이전 로직을 JWT 토큰에서 추출된 loginId로 변경
-        User user = userService.getLoginUserByLoginId(loginId);
+
+    public LeaderBoardEntity createLeaderBoard(LeaderBoardRequest dto, String userIndex) {
+        //JWT 토큰에서 추출된 사용자 index로 변경
+        User user = userService.getLoginUserByLoginId(userIndex);
         //리더보드 객체 생성
         LeaderBoardEntity leaderBoard = new LeaderBoardEntity();
         leaderBoard.setScore(dto.getScore());
         leaderBoard.setUser(user); //위에서 생성한 유저객체 set
         leaderBoard.setLoginId(user.getLoginId()); //유저객체 정보 set
         leaderBoard.setNickname(user.getNickname());
-
         //코드엔티티 생성
         CodeEntity codeEntity = new CodeEntity();
         codeEntity.setCode(dto.getCode());
@@ -61,7 +58,6 @@ public class LeaderBoardService {
         //DB에 저장
         leaderBoardRepository.save(leaderBoard);
         codeRepository.save(codeEntity);
-
         return leaderBoard;
     }
     public LeaderBoardEntity getLeaderBoardById(int id) {

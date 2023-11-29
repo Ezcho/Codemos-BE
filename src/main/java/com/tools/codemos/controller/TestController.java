@@ -1,7 +1,6 @@
 package com.tools.codemos.controller;
 
 import com.tools.codemos.dto.LeaderBoardDTO;
-import com.tools.codemos.model.LeaderBoardEntity;
 import com.tools.codemos.service.LeaderBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +16,7 @@ public class TestController {
     private LeaderBoardService leaderBoardService;
     @GetMapping
     public Page<LeaderBoardDTO> getLeaderBoard(@RequestParam(defaultValue = "1") int pageno) {
+        System.out.println("PageController on");
         return leaderBoardService.getLeaderBoard(pageno);
     }
 }

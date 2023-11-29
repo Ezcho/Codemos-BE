@@ -44,7 +44,8 @@ public class WebSecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/auth/**").permitAll()        //로그인 관련 전체접근
+                .antMatchers("/leaderboard").permitAll()    //리더보드 조회 전체접근
                 .anyRequest().authenticated()
 
                 .and()

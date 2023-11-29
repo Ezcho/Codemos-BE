@@ -28,8 +28,10 @@ public class UserService {
         return UserResponseDTO.of(userRepository.save(user));
     }
 
-    public User getLoginUserByLoginId(String loginId) {
-        return userRepository.findByLoginId(loginId)
-                .orElseThrow(() -> new RuntimeException("해당 로그인 ID를 가진 사용자가 없습니다: " + loginId));
+    public User getLoginUserByLoginId(String userIndex) {
+        Long id = Long.parseLong(userIndex); // String을 Long으로 변환
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("해당 ID를 가진 사용자가 없습니다: " + userIndex));
     }
+
 }
