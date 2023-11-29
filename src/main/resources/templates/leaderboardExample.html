@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Leaderboard Entry</title>
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+
+      var score = document.getElementById('score').value;
+      var code = document.getElementById('code').value;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/api/v1/leaderBoard/create", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var json = JSON.parse(xhr.responseText);
+          alert("Leaderboard Entry Created: " + json.id);
+        }
+      };
+
+      var data = JSON.stringify({"score": score, "code": code});
+      xhr.send(data);
+    }
+  </script>
+</head>
+<body>
+<h2>Create Leaderboard Entry</h2>
+<form id="leaderboardForm" onsubmit="submitForm(event)">
+  <div>
+    <label for="score">Score:</label><br>
+    <input type="number" id="score" name="score" required><br>
+  </div>
+  <div>
+    <label for="code">Code:</label><br>
+    <textarea id="code" name="code" required></textarea><br>
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+</body>
+</html>
