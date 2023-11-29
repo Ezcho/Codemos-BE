@@ -34,7 +34,7 @@ public class LeaderBoardService {
         PageRequest pageRequest = PageRequest.of(pageNo, pageSize, Sort.by("score").descending());
         Page<LeaderBoardEntity> leaderBoardPage = leaderBoardRepository.findAll(pageRequest);
         List<LeaderBoardDTO> dtos = leaderBoardPage.getContent().stream()
-                .map(entity -> new LeaderBoardDTO(entity.getId(), entity.getScore(), entity.getLoginId(), entity.getNickname()))
+                .map(entity -> new LeaderBoardDTO(entity.getId(),  entity.getScore(), entity.getLoginId(), entity.getNickname()))
                 .collect(Collectors.toList());
         return new PageImpl<>(dtos, pageRequest, leaderBoardPage.getTotalElements());
     }
@@ -76,7 +76,7 @@ public class LeaderBoardService {
     }
     public Iterable<LeaderBoardEntity> getTopLeaderBoard(int rows) {
         List<LeaderBoardEntity> allMaps = (List<LeaderBoardEntity>) leaderBoardRepository.findAll();
-        allMaps.sort((a, b) -> b.getScore() - a.getScore());
+        allMaps.sort((a, b) -> (int) (b.getScore() - a.getScore()));
         return allMaps.subList(0, Math.min(rows, allMaps.size()));
     }
 

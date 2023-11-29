@@ -1,10 +1,10 @@
 package com.tools.codemos.dto;
 
 public class LeaderBoardRequest {
-    private int score;
+    private double score;
     private String code;
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 

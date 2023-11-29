@@ -29,16 +29,4 @@ public class LeaderBoardController{
         System.out.println("UNAME: "+username);
         return service.createLeaderBoard(dto, username);
     }
-    @GetMapping("/read/{id}")//Id기반으로 읽어오는 리더보드
-    public LeaderBoardEntity readById(@PathVariable int id) {
-        return service.getLeaderBoardById(id);
-    }
-    @PutMapping("/update/{id}")//id기반으로 리더보드 업데이트
-    public LeaderBoardEntity update(@PathVariable int id, @RequestBody LeaderBoardEntity LB) {
-        return service.updateLeaderBoard(id, LB);
-    }
-    @DeleteMapping("/delete/{id}")//id 기반 삭제
-    public void delete(@PathVariable int id) {
-        service.deleteLeaderBoard(id);
-    }
 }

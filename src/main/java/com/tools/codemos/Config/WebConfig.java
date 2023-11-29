@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
         CorsConfiguration config = new CorsConfiguration();
 
         config.addAllowedOrigin(" http://127.0.0.1:8080"); // 로컬
-        config.addAllowedOrigin("http://프론트 AWS  주소"); // 프론트 IPv4 주소
+        config.addAllowedOrigin("http://프론트 주소 예정"); // 프론트 IPv4 주소
         config.addAllowedMethod("*"); // 모든 메소드 허용.
         config.addAllowedHeader("*");
         config.setAllowCredentials(true);

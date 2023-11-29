@@ -9,7 +9,7 @@ public class CodeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 1000)
+    @Column(length = 10000)
     private String code;
 
     @OneToOne

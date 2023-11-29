@@ -14,7 +14,6 @@ public class CodeService {
 
     @Autowired
     private CodeRepository codeRepository;
-
     public List<CodeDTO> findCodesByUserId(Long userId) {
         List<CodeEntity> codes = codeRepository.findByUserId(userId);
         return codes.stream().map(this::convertToDTO).collect(Collectors.toList());
