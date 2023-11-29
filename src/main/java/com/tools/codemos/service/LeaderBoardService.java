@@ -60,10 +60,12 @@ public class LeaderBoardService {
         codeRepository.save(codeEntity);
         return leaderBoard;
     }
-    public LeaderBoardEntity getLeaderBoardById(int id) {
-        return leaderBoardRepository.findById(id).orElse(null);
-    }
 
+    public String getCodeByLeaderBoardId(int leaderBoardId) {
+        return codeRepository.findByLeaderBoardId(leaderBoardId)
+                .map(CodeEntity::getCode)
+                .orElse(null); // ID에 해당하는 CodeEntity가 없을 경우 null 반환
+    }
     public LeaderBoardEntity updateLeaderBoard(int id, LeaderBoardEntity map) {
         if (leaderBoardRepository.existsById(id)) {
             map.setId(id);

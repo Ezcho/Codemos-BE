@@ -20,7 +20,6 @@ public class LeaderBoardController{
     private LeaderBoardService service;
     @Autowired
     private TokenProvider tokenProvider;
-
     @PostMapping("/create")
     public LeaderBoardEntity create(@RequestBody LeaderBoardRequest dto,
                                     @RequestHeader(value = "Authorization") String token) {
