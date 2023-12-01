@@ -83,9 +83,4 @@ public class LeaderBoardService {
         return allMaps.subList(0, Math.min(rows, allMaps.size()));
     }
 
-    public List<LeaderBoardEntity> getLeaderBoardEntries(int start, int end) {
-        int offset = start - 1; // 데이터베이스 인덱스는 0부터 시작합니다.
-        int limit = end - start + 1;
-        return leaderBoardRepository.findEntriesByRange(offset, limit);
-    }
 }

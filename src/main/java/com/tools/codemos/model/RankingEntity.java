@@ -10,13 +10,6 @@ import javax.persistence.*;
 @Entity
 public class RankingEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int score;
-    private String time;
-    private int leaderBoardId;
-
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -25,13 +18,16 @@ public class RankingEntity {
     @JoinColumn(name = "code_id")
     private CodeEntity code;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private int score;
+    private String time;
+    private int leaderBoardId;
+    private String nickname;
+    private String loginId;
 
-    public RankingEntity() {}
 
-    public RankingEntity(User user, CodeEntity code, int score, String date,int leaderBoardId) {
-        this.user = user;
-        this.code = code;
-        this.score = score;
-        this.leaderBoardId = leaderBoardId;
+    public RankingEntity() {
     }
 }

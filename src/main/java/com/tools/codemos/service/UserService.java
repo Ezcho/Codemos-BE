@@ -77,16 +77,24 @@ public class UserService {
         if (leaderBoard.isEmpty()) {
             return null;
         }
-        System.out.println("copy함수");
+
         LeaderBoardEntity leaderBoardEntity = leaderBoard.get();
+        Optional<RankingEntity> existingRanking = rankingRepository.findByLoginId(leaderBoardEntity.getLoginId());
+
+        // 기존 랭킹 데이터가 있는 경우 삭제
+        existingRanking.ifPresent(ranking -> rankingRepository.deleteByLoginId(ranking.getLoginId()));
+
         RankingEntity rankingEntity = new RankingEntity();
         rankingEntity.setUser(leaderBoardEntity.getUser());
         rankingEntity.setCode(leaderBoardEntity.getCodeEntity());
         rankingEntity.setScore(leaderBoardEntity.getScore());
         rankingEntity.setTime(leaderBoardEntity.getTime());
         rankingEntity.setLeaderBoardId(leaderBoardEntity.getId());
+        rankingEntity.setNickname(leaderBoardEntity.getNickname());
+        rankingEntity.setLoginId(leaderBoardEntity.getLoginId());
+
         rankingRepository.save(rankingEntity);
-        System.out.println(rankingEntity);
         return rankingEntity;
     }
+
 }
