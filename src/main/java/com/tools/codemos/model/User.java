@@ -1,5 +1,7 @@
 package com.tools.codemos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tools.codemos.login.Authority;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,5 +35,6 @@ public class User {
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private List<LeaderBoardEntity> leaderBoardEntries = new ArrayList<>();
 }

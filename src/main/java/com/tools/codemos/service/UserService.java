@@ -3,9 +3,14 @@ package com.tools.codemos.service;
 import com.tools.codemos.Config.SecurityUtil;
 import com.tools.codemos.dto.MypageResponseDTO;
 import com.tools.codemos.dto.UserResponseDTO;
+import com.tools.codemos.model.LeaderBoardEntity;
+import com.tools.codemos.model.RankingEntity;
 import com.tools.codemos.model.User;
+import com.tools.codemos.repository.LeaderBoardRepository;
+import com.tools.codemos.repository.RankingRepository;
 import com.tools.codemos.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +24,11 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
+    @Autowired
+    private LeaderBoardRepository leaderBoardRepository;
+
+    @Autowired
+    private RankingRepository rankingRepository;
 
     public UserResponseDTO getMyInfoBySecurity() {
         return userRepository.findById(SecurityUtil.getCurrentMemberId())
@@ -59,4 +69,24 @@ public class UserService {
         );
     }
 
+
+
+    @Transactional(readOnly = false)
+    public RankingEntity copyLeaderBoardToRanking(int id) {
+        Optional<LeaderBoardEntity> leaderBoard = leaderBoardRepository.findById(id);
+        if (leaderBoard.isEmpty()) {
+            return null;
+        }
+        System.out.println("copy함수");
+        LeaderBoardEntity leaderBoardEntity = leaderBoard.get();
+        RankingEntity rankingEntity = new RankingEntity();
+        rankingEntity.setUser(leaderBoardEntity.getUser());
+        rankingEntity.setCode(leaderBoardEntity.getCodeEntity());
+        rankingEntity.setScore(leaderBoardEntity.getScore());
+        rankingEntity.setTime(leaderBoardEntity.getTime());
+        rankingEntity.setLeaderBoardId(leaderBoardEntity.getId());
+        rankingRepository.save(rankingEntity);
+        System.out.println(rankingEntity);
+        return rankingEntity;
+    }
 }

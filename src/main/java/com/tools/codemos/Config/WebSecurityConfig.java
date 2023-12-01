@@ -46,6 +46,7 @@ public class WebSecurityConfig {
                 .antMatchers("/leaderboard").permitAll()
                 .antMatchers("/leaderboard/**").permitAll()
                 .antMatchers("/api/v1/**").permitAll()//리더보드 조회 전체접근
+                .antMatchers("/user/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()

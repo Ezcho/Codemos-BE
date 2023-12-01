@@ -1,5 +1,7 @@
 package com.tools.codemos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class CodeEntity {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
+    @JsonIgnore
     private LeaderBoardEntity leaderBoard;
     public int getId() {
         return id;
