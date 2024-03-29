@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CodemosApplicationTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CodemosApplicationTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.tools.codemos.html">com.tools.codemos</a> &gt; CodemosApplicationTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.256s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">contextLoads()</td>
+<td class="success">0.256s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>05:16:03.583 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+05:16:03.599 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+05:16:03.675 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.tools.codemos.CodemosApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+05:16:03.698 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.tools.codemos.CodemosApplicationTests], using SpringBootContextLoader
+05:16:03.708 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.tools.codemos.CodemosApplicationTests]: class path resource [com/tools/codemos/CodemosApplicationTests-context.xml] does not exist
+05:16:03.713 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.tools.codemos.CodemosApplicationTests]: class path resource [com/tools/codemos/CodemosApplicationTestsContext.groovy] does not exist
+05:16:03.714 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.tools.codemos.CodemosApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+05:16:03.716 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.tools.codemos.CodemosApplicationTests]: CodemosApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+05:16:03.798 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.tools.codemos.CodemosApplicationTests]
+05:16:03.934 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/ec2-user/Github/Codemos-BE/build/classes/java/main/com/tools/codemos/codemosApplication.class]
+05:16:03.938 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.tools.codemos.codemosApplication for test class com.tools.codemos.CodemosApplicationTests
+05:16:04.179 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.tools.codemos.CodemosApplicationTests]: using defaults.
+05:16:04.181 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+05:16:04.205 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27f9e982, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4593ff34, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@37d3d232, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@30c0ccff, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@581d969c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@22db8f4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2b46a8c1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1d572e62, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@29caf222, org.springframework.test.context.event.EventPublishingTestExecutionListener@46cf05f7, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5851bd4f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7cd1ac19, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2f40a43, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3caa4757, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@69c43e48, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1804f60d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3a80515c]
+05:16:04.214 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@28c0b664 testClass = CodemosApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2c444798 testClass = CodemosApplicationTests, locations = '{}', classes = '{class com.tools.codemos.codemosApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@320de594, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@60641ec8, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4d18aa28, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@16746061, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4febb875, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@1cf56a1c], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.15)
+
+2024-03-29 05:16:04.961  INFO 609822 --- [    Test worker] c.tools.codemos.CodemosApplicationTests  : Starting CodemosApplicationTests using Java 11.0.20 on ip-172-31-2-52.ap-northeast-1.compute.internal with PID 609822 (started by root in /home/ec2-user/Github/Codemos-BE)
+2024-03-29 05:16:04.963  INFO 609822 --- [    Test worker] c.tools.codemos.CodemosApplicationTests  : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-03-29 05:16:06.587  INFO 609822 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-29 05:16:06.755  INFO 609822 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 157 ms. Found 4 JPA repository interfaces.
+2024-03-29 05:16:08.325  INFO 609822 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-29 05:16:08.421  INFO 609822 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-03-29 05:16:08.781  INFO 609822 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-29 05:16:09.040  INFO 609822 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-29 05:16:09.881  INFO 609822 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-29 05:16:09.969  INFO 609822 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-03-29 05:16:12.483  INFO 609822 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-29 05:16:12.502  INFO 609822 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-29 05:16:14.515  INFO 609822 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3f7d73e3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@513ddf5f, org.springframework.security.web.context.SecurityContextPersistenceFilter@55e3b64d, org.springframework.security.web.header.HeaderWriterFilter@4417755b, org.springframework.security.web.authentication.logout.LogoutFilter@65029fc, com.tools.codemos.jwt.JwtFilter@6109366a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48543f11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@cda988, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4ed492df, org.springframework.security.web.session.SessionManagementFilter@6f9e6a85, org.springframework.security.web.access.ExceptionTranslationFilter@3a75d9a1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a887649]
+2024-03-29 05:16:15.056  WARN 609822 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-29 05:16:16.147  INFO 609822 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-03-29 05:16:17.052  INFO 609822 --- [    Test worker] c.tools.codemos.CodemosApplicationTests  : Started CodemosApplicationTests in 12.742 seconds (JVM running for 15.291)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.4</a> at Mar 29, 2024, 5:16:17 AM</p>
+</div>
+</div>
+</body>
+</html>

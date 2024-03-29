@@ -47,6 +47,7 @@ public class WebSecurityConfig {
                 .antMatchers("/leaderboard/**").permitAll()
                 .antMatchers("/api/v1/**").permitAll()//리더보드 조회 전체접근
                 .antMatchers("/user/**").permitAll()
+		.antMatchers("/.well-known/pki-validation/**").permitAll() // .well-known
                 .anyRequest().authenticated()
 
                 .and()
