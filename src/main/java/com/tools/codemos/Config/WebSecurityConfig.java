@@ -39,7 +39,6 @@ public class WebSecurityConfig {
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .accessDeniedHandler(jwtAccessDeniedHandler)
-
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()        //로그인 관련 전체접근
