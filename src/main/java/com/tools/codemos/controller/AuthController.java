@@ -18,11 +18,18 @@ public class AuthController {
     private final TokenProvider tokenProvider;
 
 
-    @PostMapping("/signup")
-    public ResponseEntity<UserResponseDTO> signup(@RequestBody UserRequestDTO requestDto) {
+    @PostMapping("/sign")
+    public ResponseEntity<UserResponseDTO> CreateUserInfo(@RequestBody UserRequestDTO requestDto) {
         return ResponseEntity.ok(authService.signup(requestDto));
     }
-
+    @DeleteMapping("/sign")
+    public void deleteUserInfo(){}
+    @PutMapping("/sign")
+    public void updateUserInfo(){}
+    @PostMapping("/changepwd")
+    public void changePwd(){}
+    @GetMapping("/findLoginId")
+    public void FindLoginId(){}
     @PostMapping("/login")
     public ResponseEntity<TokenDTO> login(@RequestBody UserRequestDTO requestDto) {
         return ResponseEntity.ok(authService.login(requestDto));
