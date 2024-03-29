@@ -18,7 +18,6 @@ public class PublicAccessController {
     private RankingService rankingService;
     @GetMapping
     public Page<RankingDTO> getLeaderBoard(@RequestParam(defaultValue = "1") int pageno) {
-        System.out.println("PageController on");
         return rankingService.getRanking(pageno);
     }
     @GetMapping("/{id}")

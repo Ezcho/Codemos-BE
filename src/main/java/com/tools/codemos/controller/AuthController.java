@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
     private final TokenProvider tokenProvider;
-
-
     @PostMapping("/sign")
     public ResponseEntity<UserResponseDTO> CreateUserInfo(@RequestBody UserRequestDTO requestDto) {
         return ResponseEntity.ok(authService.signup(requestDto));
@@ -34,6 +32,7 @@ public class AuthController {
     public ResponseEntity<TokenDTO> login(@RequestBody UserRequestDTO requestDto) {
         return ResponseEntity.ok(authService.login(requestDto));
     }
+
     @GetMapping("/verify-token")
     public ResponseEntity<?> verifyToken(@RequestHeader(value="Authorization") String bearerToken) {
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
