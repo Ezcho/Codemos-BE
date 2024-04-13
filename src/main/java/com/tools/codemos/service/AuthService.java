@@ -36,5 +36,12 @@ public class AuthService {
         Authentication authentication = managerBuilder.getObject().authenticate(authenticationToken);
         return tokenProvider.generateTokenDto(authentication);
     }
+    public TokenDTO googleLogin(String loginId) {
+        Authentication authentication = getAuthentication(loginId);
+        return tokenProvider.generateTokenDto(authentication);
+    }
+    public Authentication getAuthentication(String loginId) {
+        return new UsernamePasswordAuthenticationToken(loginId, null);
+    }
 
 }

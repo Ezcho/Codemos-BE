@@ -25,6 +25,7 @@ public class User {
     private String password;
     private String nickname;
     private Authority authority;
+    private String profilePicURL;
     @Builder
     public User(Long id, String loginId, String password, String nickname, Authority authority) {
         this.id = id;
@@ -32,6 +33,15 @@ public class User {
         this.password = password;
         this.nickname = nickname;
         this.authority = authority;
+    }
+
+    public User(String loginId, String password, String nickname, Authority authority, String profilePicURL){
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+        this.nickname = nickname;
+        this.authority = authority;
+        this.profilePicURL = profilePicURL;
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)

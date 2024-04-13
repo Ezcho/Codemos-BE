@@ -4,7 +4,9 @@ import com.tools.codemos.jwt.JwtAccessDeniedHandler;
 import com.tools.codemos.jwt.JwtAuthenticationEntryPoint;
 import com.tools.codemos.jwt.JwtSecurityConfig;
 import com.tools.codemos.jwt.TokenProvider;
+import com.tools.codemos.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +26,8 @@ public class WebSecurityConfig {
     private final TokenProvider tokenProvider;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+    @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -47,9 +51,12 @@ public class WebSecurityConfig {
                 .antMatchers("/api/v1/**").permitAll()//리더보드 조회 전체접근
                 .antMatchers("/user/**").permitAll()
                 .anyRequest().authenticated()
-
                 .and()
-                .apply(new JwtSecurityConfig(tokenProvider));
+                .apply(new JwtSecurityConfig(tokenProvider))
+                .and()
+                .oauth2Login() //oAuth2 로그인 접근 허용
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
 
         return http.build();
     }
