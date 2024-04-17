@@ -20,8 +20,7 @@ public class LeaderBoardEntity {
      @JoinColumn(name = "user_id")
      @JsonBackReference
     private User user;
-
-    private String loginId; // User 객체의 loginId
+    private String email; // User 객체의 loginId
     private String nickname; // User 객체의 nickname
     @OneToOne(mappedBy = "leaderBoard", cascade = CascadeType.ALL)
     @JoinColumn(name = "code_id")

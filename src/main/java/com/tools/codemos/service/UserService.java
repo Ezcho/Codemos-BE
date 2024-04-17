@@ -36,8 +36,8 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다"));
     }
     @Transactional
-    public UserResponseDTO changeMemberNickname(String loginId, String nickname) {
-        User user = userRepository.findByLoginId(loginId).orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다"));
+    public UserResponseDTO changeMemberNickname(String email, String nickname) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다"));
         user.setNickname(nickname);
         return UserResponseDTO.of(userRepository.save(user));
     }
@@ -62,7 +62,7 @@ public class UserService {
                         leaderBoardEntity.getCodeEntity() != null ? leaderBoardEntity.getCodeEntity().getCode() : null))
                 .collect(Collectors.toList());
         return new MypageResponseDTO(
-                user.getLoginId(),
+                user.getEmail(),
                 user.getNickname(),
                 user.getAuthority().toString(),
                 leaderBoardInfos
@@ -79,10 +79,10 @@ public class UserService {
         }
 
         LeaderBoardEntity leaderBoardEntity = leaderBoard.get();
-        Optional<RankingEntity> existingRanking = rankingRepository.findByLoginId(leaderBoardEntity.getLoginId());
+        Optional<RankingEntity> existingRanking = rankingRepository.findByEmail(leaderBoardEntity.getEmail());
 
         // 기존 랭킹 데이터가 있는 경우 삭제
-        existingRanking.ifPresent(ranking -> rankingRepository.deleteByLoginId(ranking.getLoginId()));
+        existingRanking.ifPresent(ranking -> rankingRepository.deleteByEmail(ranking.getEmail()));
 
         RankingEntity rankingEntity = new RankingEntity();
         rankingEntity.setUser(leaderBoardEntity.getUser());
@@ -91,7 +91,7 @@ public class UserService {
         rankingEntity.setTime(leaderBoardEntity.getTime());
         rankingEntity.setLeaderBoardId(leaderBoardEntity.getId());
         rankingEntity.setNickname(leaderBoardEntity.getNickname());
-        rankingEntity.setLoginId(leaderBoardEntity.getLoginId());
+        rankingEntity.setEmail(leaderBoardEntity.getEmail());
 
         rankingRepository.save(rankingEntity);
         return rankingEntity;

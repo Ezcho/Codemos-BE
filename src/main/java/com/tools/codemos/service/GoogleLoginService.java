@@ -1,28 +1,23 @@
 package com.tools.codemos.service;
 
-import com.tools.codemos.dto.TokenDTO;
-import com.tools.codemos.jwt.TokenProvider;
-import com.tools.codemos.model.User;
 import com.tools.codemos.repository.UserRepository;
-import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class GoogleLoginService {
-
     @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
+
+
+    private final GoogleUserService googleUserService;
     private UserRepository userRespository;
     private AuthService authService;
     @Value("${spring.security.oauth2.client.registration.google.client-id}")
@@ -38,6 +33,11 @@ public class GoogleLoginService {
     //Authorization 코드 받기 위한 도메인
     private final static String GOOGLE_API_URI = "https://oauth2.googleapis.com";
     private final static String GOOGLE_USERINFO_URL = "https://www.googleapis.com";
+
+    public GoogleLoginService(GoogleUserService googleUserService) {
+        this.googleUserService = googleUserService;
+    }
+
     public String getGoogleAuthorizationCode() {
         return GOOGLE_AUTH_URL + "/o/oauth2/auth"
                 + "?client_id=" + GOOGLE_CLIENT_ID
@@ -100,10 +100,7 @@ public class GoogleLoginService {
         JSONObject jsonObj = new JSONObject(response.getBody());
         String email = jsonObj.getString("email");
         String picture = jsonObj.getString("picture");
-        if(userRespository.existsByLoginId(email)){
-            System.out.println(userRespository.existsByLoginId(email));
-            TokenDTO tokenDTO = authService.googleLogin(email);
-            System.out.println(tokenDTO.toString());
-        }
+        String name = jsonObj.getString("name");
+
     }
 }

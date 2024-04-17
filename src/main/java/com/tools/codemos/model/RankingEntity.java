@@ -25,7 +25,7 @@ public class RankingEntity {
     private String time;
     private int leaderBoardId;
     private String nickname;
-    private String loginId;
+    private String email;
 
 
     public RankingEntity() {
