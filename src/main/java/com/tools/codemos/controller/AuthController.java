@@ -5,6 +5,7 @@ import com.tools.codemos.dto.UserRequestDTO;
 import com.tools.codemos.dto.UserResponseDTO;
 import com.tools.codemos.jwt.TokenProvider;
 import com.tools.codemos.service.AuthService;
+import com.tools.codemos.service.GoogleLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthService authService;
     private final TokenProvider tokenProvider;
+
+    private final GoogleLoginService googleLoginService;
     @PostMapping("/sign")
     public ResponseEntity<UserResponseDTO> CreateUserInfo(@RequestBody UserRequestDTO requestDto) {
         return ResponseEntity.ok(authService.signup(requestDto));
@@ -43,5 +46,11 @@ public class AuthController {
             }
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token.");
+    }
+
+    @GetMapping("/google")
+    public void getTokenWithAuthCode(@RequestParam String code) throws Exception {
+        System.out.println("AuthCode: "+code);
+        googleLoginService.getGoogleToken(code);
     }
 }

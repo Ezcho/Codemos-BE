@@ -24,7 +24,7 @@ public class AuthService {
     private final TokenProvider tokenProvider;
 
     public UserResponseDTO signup(UserRequestDTO requestDto) {
-        if (userRepository.existsByLoginId(requestDto.getLoginId())) {
+        if (userRepository.existsByEmail(requestDto.getEmail())) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다");
         }
         User user = requestDto.toUser(passwordEncoder);
@@ -35,6 +35,13 @@ public class AuthService {
         UsernamePasswordAuthenticationToken authenticationToken = requestDto.toAuthentication();
         Authentication authentication = managerBuilder.getObject().authenticate(authenticationToken);
         return tokenProvider.generateTokenDto(authentication);
+    }
+    public TokenDTO googleLogin(String email) {
+        Authentication authentication = getAuthentication(email);
+        return tokenProvider.generateTokenDto(authentication);
+    }
+    public Authentication getAuthentication(String email) {
+        return new UsernamePasswordAuthenticationToken(email, null);
     }
 
 }

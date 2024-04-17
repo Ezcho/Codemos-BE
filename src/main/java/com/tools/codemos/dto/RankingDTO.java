@@ -11,15 +11,15 @@ import lombok.Setter;
 public class RankingDTO {
     private int id;
     private int score;
-    private String loginId;
+    private String email;
     private String nickname;
     private String time;
     private int codeId;
 
-    public RankingDTO(int id, int score, String loginId, String nickname, String time, int codeId) {
+    public RankingDTO(int id, int score, String email, String nickname, String time, int codeId) {
         this.id = id;
         this.score = score;
-        this.loginId = loginId;
+        this.email = email;
         this.nickname = nickname;
         this.time = time;
         this.codeId = codeId;

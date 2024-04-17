@@ -1,6 +1,5 @@
 package com.tools.codemos.controller;
 
-import com.tools.codemos.dto.LeaderBoardRequest;
 import com.tools.codemos.dto.MypageResponseDTO;
 import com.tools.codemos.dto.UserRequestDTO;
 import com.tools.codemos.dto.UserResponseDTO;
@@ -40,7 +39,7 @@ public class UserController {
 
     @PostMapping("/nickname")
     public ResponseEntity<UserResponseDTO> setMemberNickname(@RequestBody UserRequestDTO request) {
-        return ResponseEntity.ok(memberService.changeMemberNickname(request.getLoginId(), request.getNickname()));
+        return ResponseEntity.ok(memberService.changeMemberNickname(request.getEmail(), request.getNickname()));
     }
 
     private final UserService userService;

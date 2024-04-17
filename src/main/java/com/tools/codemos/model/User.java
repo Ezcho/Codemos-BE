@@ -1,6 +1,5 @@
 package com.tools.codemos.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tools.codemos.login.Authority;
 import lombok.Builder;
@@ -21,17 +20,27 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String loginId;
+    private String email;
     private String password;
     private String nickname;
     private Authority authority;
+    private String profilePicURL;
     @Builder
-    public User(Long id, String loginId, String password, String nickname, Authority authority) {
+    public User(Long id, String email, String password, String nickname, Authority authority) {
         this.id = id;
-        this.loginId = loginId;
+        this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.authority = authority;
+    }
+
+    public User(String loginId, String password, String nickname, Authority authority, String profilePicURL){
+        this.id = id;
+        this.email = loginId;
+        this.password = password;
+        this.nickname = nickname;
+        this.authority = authority;
+        this.profilePicURL = profilePicURL;
     }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)

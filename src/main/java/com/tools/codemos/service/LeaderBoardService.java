@@ -7,14 +7,11 @@ import com.tools.codemos.model.LeaderBoardEntity;
 import com.tools.codemos.model.User;
 import com.tools.codemos.repository.CodeRepository;
 import com.tools.codemos.repository.LeaderBoardRepository;
-import com.tools.codemos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +31,7 @@ public class LeaderBoardService {
         PageRequest pageRequest = PageRequest.of(pageNo, pageSize, Sort.by("score").descending());
         Page<LeaderBoardEntity> leaderBoardPage = leaderBoardRepository.findAll(pageRequest);
         List<LeaderBoardDTO> dtos = leaderBoardPage.getContent().stream()
-                .map(entity -> new LeaderBoardDTO(entity.getId(),  entity.getScore(), entity.getLoginId(), entity.getNickname(),entity.getTime()))
+                .map(entity -> new LeaderBoardDTO(entity.getId(),  entity.getScore(), entity.getEmail(), entity.getNickname(),entity.getTime()))
                 .collect(Collectors.toList());
         return new PageImpl<>(dtos, pageRequest, leaderBoardPage.getTotalElements());
     }
@@ -48,7 +45,7 @@ public class LeaderBoardService {
         leaderBoard.setScore(dto.getScore());   //점수 set
         leaderBoard.setTime(dto.getTime()); //시간 set
         leaderBoard.setUser(user); //위에서 생성한 유저객체 set
-        leaderBoard.setLoginId(user.getLoginId()); //유저객체 정보 set
+        leaderBoard.setEmail(user.getEmail()); //유저객체 정보 set
         leaderBoard.setNickname(user.getNickname());
         //코드엔티티 생성
         CodeEntity codeEntity = new CodeEntity();

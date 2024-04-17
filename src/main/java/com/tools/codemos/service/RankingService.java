@@ -2,7 +2,6 @@ package com.tools.codemos.service;
 
 import com.tools.codemos.dto.RankingDTO;
 import com.tools.codemos.model.RankingEntity;
-import com.tools.codemos.repository.LeaderBoardRepository;
 import com.tools.codemos.repository.RankingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +26,7 @@ public class RankingService {
                 .map(entity -> new RankingDTO(
                         entity.getId(),
                         entity.getScore(),
-                        entity.getUser().getLoginId(),
+                        entity.getUser().getEmail(),
                         entity.getUser().getNickname(),
                         entity.getTime(),
                         entity.getCode().getId()))

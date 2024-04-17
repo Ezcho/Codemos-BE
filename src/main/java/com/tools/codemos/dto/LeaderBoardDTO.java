@@ -9,13 +9,13 @@ public class LeaderBoardDTO {
     private int id;
     private int score;
     private String time;
-    private String loginId;
+    private String email;
     private String nickname;
 
-    public LeaderBoardDTO(int id, int score, String loginId, String nickname,String time) {
+    public LeaderBoardDTO(int id, int score, String email, String nickname,String time) {
         this.id = id;
         this.score = score;
-        this.loginId = loginId;
+        this.email = email;
         this.nickname = nickname;
         this.time = time;
     }
